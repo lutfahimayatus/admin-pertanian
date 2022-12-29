@@ -72,7 +72,7 @@ if (isset($_POST['submit_login'])) {
                 <form action="" class="form-auth" method="POST">
                     <div class="form-group ">
                          <label for="email">Email</label>
-                        <input type="text" name="email" id="username" class="form-control" placeholder="Username" required>
+                        <input type="text" name="email" id="email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
