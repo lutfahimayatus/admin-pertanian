@@ -21,16 +21,17 @@ class AuthController
             $result = mysqli_query($this->connect, $sql);
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $count = mysqli_num_rows($result);
-            if ($count == 1) {
+            if ($count ) {
                 $_SESSION['id_user'] = $row['id_user'];
                 $_SESSION['username'] = $row['username'];
-                $_SESSION['name'] = $row['name'];
+                $_SESSION['name'] = $row['nama_user'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['alamat'] = $row['alamat'];
                 $_SESSION['no_telp'] = $row['no_telp'];
 
                 // get kota
+                require_once 'KotaController.php';
                 $kotaController = new KotaController();
                 $kota = $kotaController->ambil_kota_by_id($row['id_kota']);
                 $_SESSION['nama_kota'] = $kota['nama_kota'];
@@ -39,7 +40,7 @@ class AuthController
             } else {
                 $error = "Your Login Email or Password is invalid";
                 $_SESSION['error_login'] = $error;
-                header("location: login.php");
+                //header("location: login.php");
             }
         } catch (\Throwable $th) {
             echo $th->getMessage();

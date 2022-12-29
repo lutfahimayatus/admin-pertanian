@@ -1,5 +1,6 @@
 <?php
 session_start();
++include 'config/connect.php';
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'admin') {
         header("location: index.php");
@@ -7,7 +8,7 @@ if (isset($_SESSION['role'])) {
         header("location: index.php");
     }
 }
-if (isset($_POST['login'])) {
+if (isset($_POST['submit_login'])) {
     require_once 'controllers/AuthController.php';
     $auth = new AuthController();
     $auth->login($_REQUEST);
@@ -59,16 +60,25 @@ if (isset($_POST['login'])) {
         <div class="card auth-card">
             <div class="card-body">
                 <h3 class="card-title">Login</h3>
+                <!-- check if there an error -->
+                <?php if (isset($_SESSION['error_login'])) { ?>
+                    <div class="text-danger fw-bold mb-3">
+                        <?= $_SESSION['error_login']; ?>
+                    </div>
+                <?php
+                    unset($_SESSION['error_login']);
+                } ?>
+
                 <form action="" class="form-auth" method="POST">
                     <div class="form-group ">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
+                         <label for="email">Email</label>
+                        <input type="text" name="email" id="username" class="form-control" placeholder="Username" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <button type="submit" name="submit_login" class="btn btn-primary w-100">Login</button>
                 </form>
                 <a href="#" class="mt-2"><span>Lupa Password</span></a>
                 <hr>
