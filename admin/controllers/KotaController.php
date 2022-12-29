@@ -25,12 +25,8 @@ class KotaController
     {
         $sql = "SELECT * FROM kota WHERE id_kota = $id LIMIT 1";
         $result = mysqli_query($this->connect, $sql);
-        $row = [];
-        if ($result) {
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        } else {
-            return header('location: ../404.php');
-        }
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if (!$row) header('location: ../404.php');
         return $row;
     }
 

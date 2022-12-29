@@ -119,9 +119,10 @@ class TransaksiController
         return $row;
     }
 
-    function update_transaksi($id){
-    if(isset($request['submit_data']){ 
-        $no_resi = $request['no_resi'];
-    })
+    function update_transaksi($id)
+    {
+        // if(isset($request['submit_data']){ 
+        //     $no_resi = $request['no_resi'];
+        // })
     }
 }

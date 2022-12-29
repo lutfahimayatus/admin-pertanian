@@ -16,7 +16,7 @@
                 <div class="card product-card">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="product-price">Rp. <?= rupiah($row['harga']); ?></div>
-                        <div class="product-sale"><?= $row['terjual']; ?> Terjual</div>
+                        <div class="product-sale"><?= $row['harga']; ?> Terjual</div>
                     </div>
                     <div class="product-image" style="min-height: 230px;">
                         <img src="admin/assets/images/produk/<?= $gambar[0]; ?>" alt=" <?= $row['nama_produk']; ?>">
