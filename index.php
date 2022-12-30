@@ -72,7 +72,7 @@ $total_cart = $cart2->get_number_cart($cart);
                 <div class="hero-topbar row">
                     <div class="col-lg-12 d-flex justify-content-between">
                         <div class=" search-form flex-0">
-                            <input type="text" name="search" id="search" class="search-input form-control" placeholder="Temukan pencarian terbaik hanya di hrvst">
+                            <input type="text" name="search" id="search" class="search-input form-control" placeholder="Temukan pencarian terbaik hanya di mayasari">
                             <span class="text-dark">
                                 <i class="fa fa-search"></i>
                             </span>
