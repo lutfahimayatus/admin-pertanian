@@ -37,7 +37,7 @@ if (isset($_POST['submit_login'])) {
         <div class="container-fluid mx-auto">
             <div class="topbar row align-items-center md:justfy-content-center">
                 <div class="col-lg-4 ms-auto">
-                    <div class="logo">HRVST</div>
+                    <div class="logo">MAYASARI</div>
                 </div>
                 <div class="col-lg-8  header-info-list">
                     <div class="header-info-item">

@@ -121,7 +121,7 @@ $data_cart = $cart_->get_produk_by_cart($cart);
                                         </div>
                                     </div>
                                     <button type="submit" name="checkout_final" class="btn btn-primary w-100 mb-3">Checkout</button>
-                                    <button type="button" class="btn btn-outline-secondary w-100">Kembali ke Menu</button>
+                                    <a href='list-produk.php'><button type="button" class="btn btn-outline-secondary w-100">Kembali ke Menu</button><a>
                                 </form>
                             </div>
                         </div>

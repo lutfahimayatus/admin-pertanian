@@ -42,7 +42,7 @@ $total_cart = $cart2->get_number_cart($cart);
         <div class="container-fluid mx-auto">
             <div class="topbar row align-items-center justify-content-between">
                 <div class="col-lg-4 col-4 ">
-                    <div class="logo">HRVST</div>
+                    <div class="logo">MAYASARI</div>
                 </div>
                 <div class="col-lg-8  header-info-list">
                     <div class="header-info-item">
