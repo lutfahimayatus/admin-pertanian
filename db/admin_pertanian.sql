@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 25, 2022 at 01:15 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 30, 2022 at 03:32 AM
+-- Server version: 5.7.21
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_tani`
+-- Database: `admin_pertanian`
 --
 
 -- --------------------------------------------------------
@@ -27,9 +28,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `akses`
 --
 
-CREATE TABLE `akses` (
-  `id_akses` tinyint(10) NOT NULL,
-  `hak_akses` varchar(50) NOT NULL
+DROP TABLE IF EXISTS `akses`;
+CREATE TABLE IF NOT EXISTS `akses` (
+  `id_akses` tinyint(10) NOT NULL AUTO_INCREMENT,
+  `hak_akses` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_akses`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -38,13 +41,17 @@ CREATE TABLE `akses` (
 -- Table structure for table `detail_transaksi`
 --
 
-CREATE TABLE `detail_transaksi` (
-  `id_detailtransaksi` int(11) NOT NULL,
+DROP TABLE IF EXISTS `detail_transaksi`;
+CREATE TABLE IF NOT EXISTS `detail_transaksi` (
+  `id_detailtransaksi` int(11) NOT NULL AUTO_INCREMENT,
   `id_produk` int(11) NOT NULL,
   `id_transaksi` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `total_harga` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `total_harga` int(100) NOT NULL,
+  PRIMARY KEY (`id_detailtransaksi`),
+  KEY `id_transaksi` (`id_transaksi`),
+  KEY `id_produk` (`id_produk`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `detail_transaksi`
@@ -63,11 +70,13 @@ INSERT INTO `detail_transaksi` (`id_detailtransaksi`, `id_produk`, `id_transaksi
 -- Table structure for table `kota`
 --
 
-CREATE TABLE `kota` (
-  `id_kota` int(11) NOT NULL,
+DROP TABLE IF EXISTS `kota`;
+CREATE TABLE IF NOT EXISTS `kota` (
+  `id_kota` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kota` varchar(50) NOT NULL,
-  `ongkos_kirim` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ongkos_kirim` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_kota`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kota`
@@ -75,7 +84,11 @@ CREATE TABLE `kota` (
 
 INSERT INTO `kota` (`id_kota`, `nama_kota`, `ongkos_kirim`) VALUES
 (1, 'Jember', '10000'),
-(2, 'Probolinggo', '20000');
+(2, 'Surabaya', '50000'),
+(9, 'Madiun', '80000'),
+(10, 'Banyuwangi', '20000'),
+(11, 'Bondowoso', '12500'),
+(12, 'Situbondo', '12500');
 
 -- --------------------------------------------------------
 
@@ -83,13 +96,15 @@ INSERT INTO `kota` (`id_kota`, `nama_kota`, `ongkos_kirim`) VALUES
 -- Table structure for table `pemasok`
 --
 
-CREATE TABLE `pemasok` (
-  `id_pemasok` int(11) NOT NULL,
+DROP TABLE IF EXISTS `pemasok`;
+CREATE TABLE IF NOT EXISTS `pemasok` (
+  `id_pemasok` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pemasok` varchar(100) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `alamat` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `alamat` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_pemasok`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -97,14 +112,16 @@ CREATE TABLE `pemasok` (
 -- Table structure for table `produk`
 --
 
-CREATE TABLE `produk` (
-  `id_produk` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produk`;
+CREATE TABLE IF NOT EXISTS `produk` (
+  `id_produk` int(11) NOT NULL AUTO_INCREMENT,
   `nama_produk` varchar(100) NOT NULL,
   `gambar` text NOT NULL,
   `harga` int(50) NOT NULL,
   `stok` int(11) NOT NULL,
-  `deskripsi_produk` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `deskripsi_produk` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_produk`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `produk`
@@ -116,7 +133,9 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `gambar`, `harga`, `stok`, `de
 (46, 'Commodo est consequ', 'Screenshot_20221116_110754.png,Screenshot_20221116_134131.png', 12, 12, 'Omnis explicabo Ut '),
 (47, 'Non optio non optio', '', 0, 0, 'Officia iusto in min'),
 (48, 'Incididunt velit vo', '', 0, 0, 'Aut error sint volup'),
-(49, '123123', '', 12321, 213123, '2312313123                                        ');
+(49, '123123', '', 12321, 213123, '2312313123                                        '),
+(50, 'Antracol', 'antracol.jpg', 2000, 500, 'sjdhriyf'),
+(51, 'Confidor 5 WP', 'confidor 5 wp.jpg', 500, 1000, 'sjhdrygf');
 
 -- --------------------------------------------------------
 
@@ -124,15 +143,19 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `gambar`, `harga`, `stok`, `de
 -- Table structure for table `restok`
 --
 
-CREATE TABLE `restok` (
-  `id_restok` int(11) NOT NULL,
+DROP TABLE IF EXISTS `restok`;
+CREATE TABLE IF NOT EXISTS `restok` (
+  `id_restok` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal_restok` date NOT NULL,
   `id_pemasok` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `stok_masuk` varchar(50) NOT NULL,
   `harga_beli` varchar(50) NOT NULL,
-  `harga_jual` varchar(50) NOT NULL
+  `harga_jual` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_restok`),
+  UNIQUE KEY `id_produk` (`id_produk`),
+  UNIQUE KEY `id_pemasok` (`id_pemasok`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -141,8 +164,9 @@ CREATE TABLE `restok` (
 -- Table structure for table `transaksi`
 --
 
-CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
+DROP TABLE IF EXISTS `transaksi`;
+CREATE TABLE IF NOT EXISTS `transaksi` (
+  `id_transaksi` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal_transaksi` varchar(30) NOT NULL,
   `total_bayar` varchar(100) NOT NULL,
   `bukti_transaksi` varchar(225) NOT NULL,
@@ -150,8 +174,11 @@ CREATE TABLE `transaksi` (
   `id_user` int(11) NOT NULL,
   `id_kota` int(11) NOT NULL,
   `alamat` text NOT NULL,
-  `no_resi` varchar(225) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `no_resi` varchar(225) DEFAULT NULL,
+  PRIMARY KEY (`id_transaksi`),
+  KEY `id_user` (`id_user`),
+  KEY `id_kota` (`id_kota`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaksi`
@@ -172,8 +199,9 @@ INSERT INTO `transaksi` (`id_transaksi`, `tanggal_transaksi`, `total_bayar`, `bu
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `id_kota` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -181,8 +209,10 @@ CREATE TABLE `user` (
   `nama_user` varchar(100) NOT NULL,
   `role` enum('user','admin','operator','') NOT NULL,
   `alamat` varchar(255) NOT NULL,
-  `no_telp` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `no_telp` int(20) NOT NULL,
+  PRIMARY KEY (`id_user`),
+  KEY `id_kota` (`id_kota`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -196,118 +226,8 @@ INSERT INTO `user` (`id_user`, `id_kota`, `username`, `password`, `email`, `nama
 (5, 2, '', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 'qujedafu@mailinator.com', 'sapeh', 'user', '', 0),
 (6, 1, '', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 'puwixorobe@mailinator.com', 'zinitas', 'user', '', 0),
 (7, 1, '', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 'xojuqujaga@mailinator.com', 'dipupusaje', 'user', '', 0),
-(8, 2, 'jupesedit', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 'vimy@mailinator.com', 'Elvis Malone', 'user', 'Eius proident excep', 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `akses`
---
-ALTER TABLE `akses`
-  ADD PRIMARY KEY (`id_akses`);
-
---
--- Indexes for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  ADD PRIMARY KEY (`id_detailtransaksi`),
-  ADD KEY `id_transaksi` (`id_transaksi`),
-  ADD KEY `id_produk` (`id_produk`) USING BTREE;
-
---
--- Indexes for table `kota`
---
-ALTER TABLE `kota`
-  ADD PRIMARY KEY (`id_kota`);
-
---
--- Indexes for table `pemasok`
---
-ALTER TABLE `pemasok`
-  ADD PRIMARY KEY (`id_pemasok`);
-
---
--- Indexes for table `produk`
---
-ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id_produk`);
-
---
--- Indexes for table `restok`
---
-ALTER TABLE `restok`
-  ADD PRIMARY KEY (`id_restok`),
-  ADD UNIQUE KEY `id_produk` (`id_produk`),
-  ADD UNIQUE KEY `id_pemasok` (`id_pemasok`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_kota` (`id_kota`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD KEY `id_kota` (`id_kota`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `akses`
---
-ALTER TABLE `akses`
-  MODIFY `id_akses` tinyint(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  MODIFY `id_detailtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `kota`
---
-ALTER TABLE `kota`
-  MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `pemasok`
---
-ALTER TABLE `pemasok`
-  MODIFY `id_pemasok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `produk`
---
-ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
---
--- AUTO_INCREMENT for table `restok`
---
-ALTER TABLE `restok`
-  MODIFY `id_restok` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+(8, 2, 'jupesedit', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 'vimy@mailinator.com', 'Elvis Malone', 'user', 'Eius proident excep', 0),
+(9, 1, 'lutfahs', '7596304782f59a990fa4722cc4f1ab20', 'lutfahimayatus@gmail.com', 'lutfa himayatus', 'user', 'Jl. PB Sudirman 126', 12344321);
 
 --
 -- Constraints for dumped tables
