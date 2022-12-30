@@ -14,7 +14,7 @@ $total_cart = $cart2->get_number_cart($cart);
     <div class="container-fluid mx-auto">
         <div class="topbar-alt row align-items-center justify-content-between">
             <div class="col-lg-4 col-4 ">
-                <div class="logo"><a href="/ecommerce">HRVST</a></div>
+                <div class="logo"><a href="/ecommerce">MAYASARI</a></div>
             </div>
             <div class="col-lg-8  header-info-list">
                 <div class="header-info-item">
