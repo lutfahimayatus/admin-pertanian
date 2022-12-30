@@ -46,12 +46,6 @@ $total_cart = $cart2->get_number_cart($cart);
                         <i class="fa fa-search"></i>
                     </span>
                 </div>
-                <!-- <a href="keranjang.php">
-                    <span class="cart-icon text-dark sm-hidden">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="badge"><?= $total_cart; ?></span>
-                    </span>
-                </a> -->
                 <?php
                 if (!isset($_SESSION['id_user'])) {
                 ?>
