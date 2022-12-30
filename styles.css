@@ -152,6 +152,13 @@ footer {
   background-size: cover;
   position: relative;
 }
+#lupa_password {
+  background-image: url("./assets/images/login.png");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
 #register {
   background-image: url("./assets/images/register.png");
   height: 130vh;
