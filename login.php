@@ -80,7 +80,7 @@ if (isset($_POST['submit_login'])) {
                     </div>
                     <button type="submit" name="submit_login" class="btn btn-primary w-100">Login</button>
                 </form>
-                <a href="#" class="mt-2"><span>Lupa Password</span></a>
+                <a href="https://localhost/pertanian/admin-pertanian/lupapassword.php" class="mt-2"><span>Lupa Password</span></a>
                 <hr>
                 <a class="text-center" href="register.php"><span>Belum punya akun? <span class="text-dark">buat
                             sekarang</span></span></a>
