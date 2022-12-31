@@ -113,7 +113,6 @@ if (isset($_POST['submit_register'])) {
                         <label for="password_confirmation">Konfirmasi Password</label>
                         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Masukkan password anda sekali lagi" required>
                     </div>
-
                     <button type="submit" name="submit_register" class="btn btn-primary w-100">Register</button>
                 </form>
                 <a class="mt-2" href="lupa-password.php"><span>Lupa Password</span></a>
@@ -126,7 +125,7 @@ if (isset($_POST['submit_register'])) {
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
                     debitis ea, sunt
                     tempora.</p>

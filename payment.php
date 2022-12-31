@@ -174,7 +174,7 @@ $data_cart = $cart_->get_produk_by_cart($cart);
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
                     debitis ea, sunt
                     tempora.</p>

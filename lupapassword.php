@@ -1,43 +1,6 @@
-<?php
-include_once 'config/connect.php';
-if(isset($_SESSION['username']) !=''){
-    header("location:index.php");
-    exit();
-}
-
-$err    = "";
-$sukses = "";
-$email  = "";
-
-if(isset($_POST['submit'])){
-    $email = $_POST['email'];
-    if($email == ''){
-        $err = "silahkan masukkan email";
-    }else{
-        $sql   = "SELECT * FROM user WHERE email = '$email'";
-        $q1     = mysqli_query($sql,MYSQLI_ASSOC);
-        $n1     = mysqli_num_rows($q1);
-
-        if($n1 < 1){
-            $err = "Email: <b>$email</b> tidak ditemukan";
-        }
-    }
-
-    if(empty($err)){
-        $token_ganti_password  = md5(rand(0,1000));
-        $judul_email           = "ganti password";
-        $isi_email             = "Seseorang meminta untuk melakukan perubahan password. Silahkan klik link di bawah ini:<br/>";
-        $isi_email             .= url_dasar(). "/ganti_password.php?email&token=$token_ganti_password";
-        kirim_email($email,$email,$judul_email,$isi_email);
-
-        $sql1   ="UPDATE user SET token_ganti_password";
-        mysqli_query($koneksi,$sql1);
-        $sukes  ="link ganti password sudah dikirim ke email anda.";
-    }
-}
+<?php 
+require_once "controllers/controllerlogin.php" ;
 ?>
-<?php if($err){ echo "<div class='error'>$err</div>";}?>
-<?php if($sukses){ echo "<div class='sukes'>$sukses</div>";}?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -86,9 +49,22 @@ if(isset($_POST['submit'])){
         <form action="" class="form-auth" method="POST">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" name="email" id="email" class="form-control" placeholder="Masukkan Email anda" value="<?php echo $email?>">
+            <?php
+                        if(count($errors) > 0){
+                            ?>
+                            <div class="alert alert-danger text-center">
+                                <?php 
+                                    foreach($errors as $error){
+                                        echo $error;
+                                    }
+                                ?>
+                            </div>
+                            <?php
+                        }
+                        ?>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Masukkan Email anda" required value="<?php echo $email?>" >
         </div>
-    <button type="submit" name="submit" class="btn btn-primary w-100">Konfirmasi</button>
+    <button type="submit" name="check-email" class="btn btn-primary w-100">Konfirmasi</button>
 </form>
 </div>
 </main>

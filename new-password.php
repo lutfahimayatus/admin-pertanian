@@ -1,26 +1,18 @@
-<?php
-session_start();
-+include 'config/connect.php';
-if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] == 'admin') {
-        header("location: index.php");
-    } else if ($_SESSION['role'] == 'user') {
-        header("location: index.php");
-    }
-}
-if (isset($_POST['submit_login'])) {
-    require_once 'controllers/AuthController.php';
-    $auth = new AuthController();
-    $auth->login($_REQUEST);
+<?php 
+require_once"controllers/controllerlogin.php";
+?>
+<?php 
+$email = $_SESSION['email'];
+if($email == false){
+  header('Location: login.php');
 }
 ?>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | E-Commerce</title>
+    <title>Lupa Password</title>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./dist/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="./dist/fontawesome/css/brands.min.css">
@@ -31,9 +23,8 @@ if (isset($_POST['submit_login'])) {
     <!-- Scripts -->
     <script src="./dist/bootstrap/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-    <header id="header">
+<header id="header">
         <div class="container-fluid mx-auto">
             <div class="topbar row align-items-center md:justfy-content-center">
                 <div class="col-lg-4 ms-auto">
@@ -56,41 +47,28 @@ if (isset($_POST['submit_login'])) {
             </div>
         </div>
     </header>
-    <main id="login">
-        <div class="card auth-card">
-            <div class="card-body">
-                <h3 class="card-title">Login</h3>
-                <!-- check if there an error -->
-                <?php if (isset($_SESSION['error_login'])) { ?>
-                    <div class="text-danger fw-bold mb-3">
-                        <?= $_SESSION['error_login']; ?>
-                    </div>
-                <?php
-                    unset($_SESSION['error_login']);
-                } ?>
-
-                <form action="" class="form-auth" method="POST">
-                    <div class="form-group ">
-                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-                    </div>
-                    <button type="submit" name="submit_login" class="btn btn-primary w-100">Login</button>
-                </form>
-                <a href="lupapassword.php" class="mt-2"><span>Lupa Password</span></a>
-                <hr>
-                <a class="text-center" href="register.php"><span>Belum punya akun? <span class="text-dark">buat
-                            sekarang</span></span></a>
-                <a class="text-center" href="#"><span>butuh bantuan?</span></a>
-            </div>
-    </main>
-    <footer id="footer">
+<main id="lupa_password">
+    <div class="card auth-card">
+        <div class="card-body">
+            <h3 class="card-title">New Password</h3>
+   
+        <form action="new-password.php" class="form-auth" method="POST">
+        <div class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="Create new password" required>
+        </div>
+        <div class="form-group">
+        <input class="form-control" type="password" name="cpassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="form-group">
+        <button type="submit" name="change-password" class="btn btn-primary w-100">Konfirmasi</button>
+        </div>
+</form>
+</div>
+</main>
+<footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
                     debitis ea, sunt
                     tempora.</p>
@@ -109,5 +87,4 @@ if (isset($_POST['submit_login'])) {
         </div>
     </footer>
 </body>
-
 </html>

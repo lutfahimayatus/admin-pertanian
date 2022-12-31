@@ -26,7 +26,7 @@
         <div class="container-fluid mx-auto">
             <div class="topbar-alt row align-items-center justify-content-between">
                 <div class="col-lg-4 col-4 ">
-                    <div class="logo">HRVST</div>
+                    <div class="logo">MAYASARI</div>
                 </div>
                 <div class="col-lg-8  header-info-list">
                     <div class="header-info-item">
@@ -52,7 +52,7 @@
                 <div class="col-lg-12 d-flex justify-content-between">
                     <div class=" search-form">
                         <input type="text" name="search" id="search" class="search-input form-control"
-                            placeholder="Temukan pencarian terbaik hanya di hrvst">
+                            placeholder="Temukan pencarian terbaik hanya di MAYASARI">
                         <span class="text-dark">
                             <i class="fa fa-search"></i>
                         </span>
@@ -139,7 +139,7 @@
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
                     debitis ea, sunt
                     tempora.</p>

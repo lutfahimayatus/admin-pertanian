@@ -94,7 +94,7 @@ $data_cart = $cart_->get_produk_by_cart($cart);
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Alamat Penerima</label>
-                                        <input value="<?= isset($_SESSION['alamat']) ? $_SESSION['alamat'] : ''; ?>" type="text" name="address" id="address" class="form-control" placeholder="Password" required>
+                                        <input value="<?= isset($_SESSION['alamat']) ? $_SESSION['alamat'] : ''; ?>" type="text" name="address" id="address" class="form-control" placeholder="Masukkan Alamat Penerima" required>
                                     </div>
                                     <button name="checkout" class="btn btn-primary w-100 mb-3">Checkout</button>
                                     <button class="btn btn-secondary w-100"><a href="list-produk.php">Kembali ke Menu</a></button>

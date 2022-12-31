@@ -1,5 +1,5 @@
 <?php
-include_once 'config/connect.php';
++include 'config/connect.php';
 require_once 'config/utils.php';
 require_once 'controllers/ProdukController.php';
 

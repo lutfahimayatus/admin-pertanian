@@ -1,5 +1,5 @@
 <?php
-include_once 'config/connect.php';
++include 'config/connect.php';
 require_once 'config/utils.php';
 require_once 'controllers/ProdukController.php';
 
@@ -100,7 +100,7 @@ if (isset($_GET['cari']) && !empty($_GET['cari'])) {
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
                     debitis ea, sunt
                     tempora.</p>
