@@ -1,5 +1,7 @@
 <?php
 +include 'config/connect.php';
+session_start();
+include_once 'config/connect.php';
 require_once 'config/utils.php';
 
 if (isset($_GET['id_produk'])) {
@@ -26,7 +28,7 @@ if (isset($_GET['id_produk'])) {
     <link rel="stylesheet" href="./dist/bootstrap/css/bootstrap.min.css">
 
     <!-- Scripts -->
-    <script src="./dist/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./dist/bootstrap/js/bootstrap.bundle.js"></script>
 
     <!-- Slick Js -->
     <link rel="stylesheet" type="text/css" href="./dist/slick/slick.css" />
@@ -36,7 +38,7 @@ if (isset($_GET['id_produk'])) {
 
 <body>
     <?php include 'components/header.php'; ?>
-    v
+    
     <main id="home">
         <section class="detail-product">
             <div class="container">

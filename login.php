@@ -46,11 +46,11 @@ if (isset($_POST['submit_login'])) {
                     </div>
                     <div class="header-info-item">
                         <i class="fa fa-map-pin"></i>
-                        <span> Jl. Mastrip, Krajan Timur, Sumbersari, Jember</span>
+                        <span> Jl. Tamansari, Wuluhan, Jember</span>
                     </div>
                     <div class="header-info-item">
                         <i class="fa fa-clock"></i>
-                        <span> 10:00 - 18:00, Senin - Jumat</span>
+                        <span> 07:00 - 17:00, Senin - Sabtu</span>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@ if (isset($_POST['submit_login'])) {
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
                     debitis ea, sunt
                     tempora.</p>
