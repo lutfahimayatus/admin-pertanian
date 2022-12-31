@@ -72,9 +72,7 @@ require_once "controllers/controllerlogin.php" ;
         <div class="container">
             <div class="row">
                 <h3 class="footer-logo">HRVST</h3>
-                <p class="footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odio quis
-                    debitis ea, sunt
-                    tempora.</p>
+                <p class="footer-desc"></p>
                 <div class="footer-links">
                     <a class="footer-link-item" href="#">Metode Pembayaran</a>
                     <a class="footer-link-item" href="#">Bantuan</a>
