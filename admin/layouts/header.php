@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location: ../login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -222,7 +228,16 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block">Hi,
+                                <?php
+                                if (isset($_SESSION['name'])) {
+                                    echo $_SESSION['name'];
+                                } else {
+                                    echo "Guest";
+                                }
+                                ?>
+
+                            </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
@@ -246,10 +261,10 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.html">Stisla</a>
+                        <a href="">Mayasari</a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="index.html">St</a>
+                        <a href="">Mayasari</a>
                     </div>
 
                     <?php include "menu.php"; ?>

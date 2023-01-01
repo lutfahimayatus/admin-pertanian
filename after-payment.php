@@ -22,7 +22,7 @@ $data_transaksi = $transaksi->get_order();
 $produk = new ProdukController();
 $data = $produk->ambil_produk();
 
-var_dump($data_transaksi);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@ var_dump($data_transaksi);
     <link rel="stylesheet" href="./dist/bootstrap/css/bootstrap.min.css">
 
     <!-- Scripts -->
-    <script src="./dist/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./dist/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Slick Js -->
     <link rel="stylesheet" type="text/css" href="./dist/slick/slick.css" />

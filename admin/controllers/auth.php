@@ -26,7 +26,7 @@ class auth
             $count = mysqli_num_rows($result);
             if ($count == 1) {
                 $_SESSION['username'] = $row['username'];
-                $_SESSION['name'] = $row['name'];
+                $_SESSION['name'] = $row['nama_user'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];
                 header("location: index.php");

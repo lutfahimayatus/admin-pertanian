@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label>Nama Produk</label>
-                                        <input disabled value="<?= $data['id_produk'] ?? ''; ?>" type="text" name="nama" class="form-control">
+                                        <input disabled value="<?= $data['nama_produk'] ?? ''; ?>" type="text" name="nama" class="form-control">
 
                                     </div>
                                     <div class="form-group">
