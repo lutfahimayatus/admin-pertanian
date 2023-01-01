@@ -97,7 +97,7 @@ if (isset($_GET['id_produk'])) {
                                     </div>
                                     <span>tersisa <?= $item['stok']; ?> item</span>
                                 </div>
-                                <button class="btn btn-primary mb-3">Beli Sekarang</button>
+                                <button class="btn btn-primary mb-3"onclick="addToCart(<?= $item['id_produk']; ?>)">Beli Sekarang</button>
                                 <button class="btn btn-outline-secondary mb-3" onclick="addToCart(<?= $item['id_produk']; ?>)">Tambah ke Keranjang</button>
                                 <hr>
                                 <div class="detail-product-description">
@@ -176,6 +176,21 @@ if (isset($_GET['id_produk'])) {
                 },
                 success: function(data) {
                     location.reload();
+                }
+            })
+        }
+
+        function addToBuy(id_produk) {
+            $.ajax({
+                url: 'buy.php',
+                type: 'POST',
+                data: {
+                    id_produk: id_produk,
+                    quantity: $('#qty').val()
+                },
+                success: function(data) {
+                    // location to beli-sekarang.php
+                    location.href = 'beli-sekarang.php';
                 }
             })
         }

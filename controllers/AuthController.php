@@ -106,7 +106,7 @@ class AuthController
                 header("location: index.php");
             } else {
                 $error = "Your Login Email or Password is invalid";
-                $_SESSION['error_register'] = $error.$result;
+                $_SESSION['error_register'] = $error . $result;
                
 
                 header("location: register.php");

@@ -21,3 +21,8 @@ function includeWithVariables($filePath, $variables = array(), $print = true)
     }
     return $output;
 }
+
+function rupiah($angka)
+{
+    return number_format($angka, 2, ',', '.');
+}

@@ -3,13 +3,12 @@ session_start();
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'admin') {
         header("location: index.php");
-    } else if ($_SESSION['role'] == 'user') {
-        header("location: index.php");
+    
     }
 }
 require('layouts/auth/header.php');
 if (isset($_POST['submit_register'])) {
-    echo "anhay";
+   
     require_once 'controllers/auth.php';
     $auth = new auth();
     $auth->register($_REQUEST);
