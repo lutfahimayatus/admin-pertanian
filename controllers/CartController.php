@@ -31,6 +31,55 @@ class CartController
         }
     }
 
+    function add_to_buy($request)
+    {
+        $id_produk  = (int)$request['id_produk'];
+        $quantity = (int)$request['quantity'];
+
+        $sql = "SELECT * FROM produk WHERE id_produk = $id_produk ";
+        $result = mysqli_query($this->connect, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            if (isset($_SESSION['beli_sekarang']) && is_array($_SESSION['beli_sekarang'])) {
+                if (array_key_exists($id_produk, $_SESSION['beli_sekarang'])) {
+                    $_SESSION['beli_sekarang'][$id_produk] += $quantity;
+                } else {
+                    $_SESSION['beli_sekarang'][$id_produk] = $quantity;
+                }
+            } else {
+                $_SESSION['beli_sekarang'] = array($id_produk => $quantity);
+            }
+            return true;
+        }
+    }
+    public function get_produk_by_buy($data)
+    {
+        $result_data = array(
+            'data' => array(),
+            'total' => 0
+        );
+
+        foreach ($data as $id_produk => $qty) {
+            $sql = "SELECT * FROM produk WHERE id_produk = $id_produk";
+            $result = mysqli_query($this->connect, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $gambar = explode(',', $row['gambar']);
+            $data = array(
+                'id_produk' => $row['id_produk'],
+                'nama_produk' => $row['nama_produk'],
+                'harga' => $row['harga'],
+                'gambar' => $gambar[0],
+                'qty' => $qty,
+                'total' => $row['harga'] * $qty
+            );
+
+            array_push($result_data['data'], $data);
+            $result_data['total'] += $row['harga'] * $qty;
+        }
+
+        return $result_data;
+    }
+    
     public function get_produk_by_cart($data)
     {
         $result_data = array(

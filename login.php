@@ -4,8 +4,7 @@ session_start();
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'admin') {
         header("location: index.php");
-    } else if ($_SESSION['role'] == 'user') {
-        header("location: index.php");
+
     }
 }
 if (isset($_POST['submit_login'])) {

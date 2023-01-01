@@ -82,10 +82,10 @@ $total_cart = $cart2->get_number_cart($cart);
                         if (!isset($_SESSION['id_user'])) {
                         ?>
                             <div>
-                                <a href="login.php">
+                                <a href="register.php">
                                     <button class="btn btn-primary sm-hidden">Register</button>
                                 </a>
-                                <a href="register.php">
+                                <a href="login.php">
                                     <button class="btn btn-primary sm-hidden">Login</button>
                                 </a>
                             </div>
