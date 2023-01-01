@@ -112,7 +112,7 @@ $data_cart = $cart_->get_produk_by_cart($cart);
     <footer id="footer">
         <div class="container">
             <div class="row">
-                <h3 class="footer-logo">HRVST</h3>
+                <h3 class="footer-logo">MAYASARI</h3>
                 <p class="footer-desc"></p>
                 <div class="footer-links">
                     <a class="footer-link-item" href="#">Metode Pembayaran</a>

@@ -1,5 +1,6 @@
 <?php
 +include 'config/connect.php';
+session_start();
 require_once 'config/utils.php';
 require_once 'controllers/ProdukController.php';
 
