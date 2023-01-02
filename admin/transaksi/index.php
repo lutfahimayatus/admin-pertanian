@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start();
+
 $title = "Login";
 $css = [
     "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
@@ -10,7 +10,7 @@ $css = [
 include('../layouts/header.php');
 require_once '../controllers/TransaksiController.php';
 $produkController = new TransaksiController();
-$data = $produkController->get_order_list();
+$data = $produkController->ambil_transaksi();
 ?>
 <!-- Main Content -->
 <div class="main-content">
@@ -52,8 +52,8 @@ $data = $produkController->get_order_list();
                                             <th>Status</th>
                                             <th>Bukti Transfer</th>
                                             <th>No Resi</th>
-                                            <th>Alamat</th>
                                             <th>Kota</th>
+                                            <th>Alamat</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -68,14 +68,20 @@ $data = $produkController->get_order_list();
                                                 </td>
                                                 <td><?= $row['tanggal_transaksi'] ?></td>
                                                 <td><?= $row['total_harga'] ?></td>
-                                                <td><?= $row['status'] ?></td>
-                                                <td><?= $row['bukti_transfer'] ?></td>
+                                                <td><?= $row['status_transaksi'] ?></td>
+                                                <?php
+                                                if ($row['bukti_transaksi'] == null) {
+                                                    echo "<td>Belum ada bukti transfer</td>";
+                                                } else {
+                                                    echo "<td><img src='../assets/images/bukti_transfer/" . $row['bukti_transaksi'] . "' width='100px' height='100px'></td>";
+                                                }
+                                                ?>
                                                 <td><?= $row['no_resi'] ?></td>
-                                                <td><?= $row['kota'] ?></td>
+                                                <td><?= $row['nama_kota'] ?></td>
+                                                <td><?= $row['alamat'] ?></td>
                                                 <td>
-                                                    <a href="lihat.php?id=<?= $row['id_produk'] ?>" class="btn btn-success">Lihat</a>
-                                                    <a href="edit.php?id=<?= $row['id_produk'] ?>" class="btn btn-primary">Edit</a>
-                                                    <button onclick="hapus(<?= $row['id_produk'] ?>)" class="btn btn-danger">Hapus</button>
+                                                <a href="lihat.php?id=<?= $row['id_transaksi'] ?>" class="btn btn-success">Lihat</a>
+                                                    <a href="edit.php?id=<?= $row['id_transaksi'] ?>" class="btn btn-primary">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php

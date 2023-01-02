@@ -56,6 +56,34 @@ class AuthController
         header("location: login.php");
     }
 
+    public function forget_password($request)
+    {
+        $password = $request['password'];
+        $password_confirmation = $request['password_confirmation'];
+        $password = htmlspecialchars($password);
+        $password_confirmation = htmlspecialchars($password_confirmation);
+        // check password is match with confirm password
+        if ($password != $password_confirmation) {
+            $error = "Password is not match with confirm password";
+            $_SESSION['error_forget_password'] = $error;
+            return header("location: forget_password.php");
+        }
+
+        $sql = "UPDATE user SET password = md5('$password') WHERE id_user = $_SESSION[id_user]";
+        try {
+            $result = mysqli_query($this->connect, $sql);
+            if ($result) {
+                header("location: index.php");
+            } else {
+                $error = "Your Login Email or Password is invalid";
+                $_SESSION['error_forget_password'] = $error;
+                header("location: forget_password.php");
+            }
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            header("location: index.php");
+        }
+        
     public function register($request)
     {
         // create register function with html_escape_characters php native

@@ -1,5 +1,7 @@
 <?php
-+$title = "Login";
+include '../config/connect.php';
+include '../config/utils.php';
+$title = "Login";
 $css = [
     "node_modules/jqvmap/dist/jqvmap.min.css",
     "node_modules/summernote/dist/summernote-bs4.css",
@@ -7,6 +9,15 @@ $css = [
     "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
 ];
 include('../layouts/header.php');
+
+require '../controllers/DashboardController.php';
+$dashboard =    new DashboardController();
+
+$data_penjualan = $dashboard->ambil_penjualan();
+$data_top_product = $dashboard->ambil_top_product();
+$data_top_product_by_kota = $dashboard->ambil_top_product_by_kota();
+$data_latest_transaksi = $dashboard->ambil_latest_transaksi();
+
 ?>
 <!-- Main Content -->
 <div class="main-content">
@@ -37,15 +48,19 @@ include('../layouts/header.php');
                         </div>
                         <div class="card-stats-items">
                             <div class="card-stats-item">
-                                <div class="card-stats-item-count">24</div>
+                            <div class="card-stats-item-count"><?= $data_penjualan['total_belum_bayar']; ?></div>
+                                <div class="card-stats-item-label">Belum Bayar</div>
+                            </div>
+                            <div class="card-stats-item">
+                                <div class="card-stats-item-count"><?= $data_penjualan['total_pending']; ?></div>
                                 <div class="card-stats-item-label">Pending</div>
                             </div>
                             <div class="card-stats-item">
-                                <div class="card-stats-item-count">12</div>
+                            <div class="card-stats-item-count"><?= $data_penjualan['total_pending']; ?></div>
                                 <div class="card-stats-item-label">Shipping</div>
                             </div>
                             <div class="card-stats-item">
-                                <div class="card-stats-item-count">23</div>
+                            <div class="card-stats-item-count"><?= $data_penjualan['total_sukses']; ?></div>
                                 <div class="card-stats-item-label">Completed</div>
                             </div>
                         </div>
@@ -58,7 +73,7 @@ include('../layouts/header.php');
                             <h4>Total Orders</h4>
                         </div>
                         <div class="card-body">
-                            59
+                        <?= $data_penjualan['total_penjualan']; ?>
                         </div>
                     </div>
                 </div>
@@ -76,7 +91,7 @@ include('../layouts/header.php');
                             <h4>Balance</h4>
                         </div>
                         <div class="card-body">
-                            $187,13
+                        <?= rupiah($data_penjualan['total_revenue']); ?>
                         </div>
                     </div>
                 </div>
@@ -94,7 +109,7 @@ include('../layouts/header.php');
                             <h4>Sales</h4>
                         </div>
                         <div class="card-body">
-                            4,732
+                        <?= $data_penjualan['total_penjualan']; ?>
                         </div>
                     </div>
                 </div>
@@ -511,11 +526,11 @@ include('../layouts/header.php');
 
 <?php
 $js = [
-    "node_modules/jquery-sparkline/jquery.sparkline.min.js",
-    "node_modules/chart.js/dist/Chart.min.js",
-    "node_modules/owl.carousel/dist/owl.carousel.min.js",
-    "node_modules/summernote/dist/summernote-bs4.js",
-    "node_modules/chocolat/dist/js/jquery.chocolat.min.js",
+    "../node_modules/jquery-sparkline/jquery.sparkline.min.js",
+    "../node_modules/chart.js/dist/Chart.min.js",
+    "../node_modules/owl.carousel/dist/owl.carousel.min.js",
+    "../node_modules/summernote/dist/summernote-bs4.js",
+    "../node_modules/chocolat/dist/js/jquery.chocolat.min.js",
 ];
 
 $js_page = ['page/index.js'];
@@ -523,7 +538,7 @@ $js_page = ['page/index.js'];
 
 
 
-include('../layouts/footer.php');
+include('layouts/footer.php');
 ?>
 
 

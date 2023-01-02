@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start();
+
 $title = "Login";
 $css = [
     "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",

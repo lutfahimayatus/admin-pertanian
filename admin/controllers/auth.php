@@ -25,11 +25,12 @@ class auth
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $count = mysqli_num_rows($result);
             if ($count == 1) {
+                $_SESSION['id_user'] = $row['id_user'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['name'] = $row['nama_user'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];
-                header("location: index.php");
+                header("location: dashboard/index.php");
             } else {
                 $error = "Your Login Email or Password is invalid";
                 $_SESSION['error_login'] = $error;
@@ -75,11 +76,12 @@ class auth
             $result = mysqli_query($this->connect, $sql);
             if ($result) {
                 // set session
+                $_SESSION['user_id'] = $this->connect->insert_id;
                 $_SESSION['username'] = $username;
                 $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
                 $_SESSION['role'] = 'user';
-                header("location: index.php");
+                header("location: dashboard/index.php");
             } else {
                 $error = "Your Login Email or Password is invalid";
                 $_SESSION['error_login'] = $error;
