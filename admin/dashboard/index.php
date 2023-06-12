@@ -116,6 +116,7 @@ $data_latest_transaksi = $dashboard->ambil_latest_transaksi();
             </div>
         </div>
         <div class="row">
+            <!-- tidak ada -->
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
@@ -126,6 +127,7 @@ $data_latest_transaksi = $dashboard->ambil_latest_transaksi();
                     </div>
                 </div>
             </div>
+            <!-- tidak ada -->
             <div class="col-lg-4">
                 <div class="card gradient-bottom">
                     <div class="card-header">
@@ -141,6 +143,7 @@ $data_latest_transaksi = $dashboard->ambil_latest_transaksi();
                             </ul>
                         </div>
                     </div>
+                    <!-- tidak ada -->
                     <div class="card-body" id="top-5-scroll">
                         <ul class="list-unstyled list-unstyled-border">
                             <li class="media">
@@ -240,6 +243,7 @@ $data_latest_transaksi = $dashboard->ambil_latest_transaksi();
                             </li>
                         </ul>
                     </div>
+                    <!-- tidak ada -->
                     <div class="card-footer pt-3 d-flex justify-content-center">
                         <div class="budget-price justify-content-center">
                             <div class="budget-price-square bg-primary" data-width="20"></div>
@@ -535,12 +539,8 @@ $js = [
 
 $js_page = ['page/index.js'];
 
-
-
-
 include('layouts/footer.php');
 ?>
-
 
 <script>
     document.title = "Tambah Produk";
